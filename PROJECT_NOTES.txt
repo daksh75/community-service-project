@@ -1,0 +1,12 @@
+END-TERM PROJECT NOTES
+
+Core demonstration:
+- Python Flask backend
+- External REST API integration
+- Geocoding and coordinate consistency
+- SQLite persistence and history retrieval
+- Chart.js data visualization
+- Gemini generative AI assistant (optional API key)
+
+Important academic honesty:
+The OpenWeatherMap AQI field is a 1-5 provider index. It is not the CPCB 0-500 AQI scale. The current code does not pretend that its provider forecast is a custom-trained ML model. An ML model should only be claimed after implementing training, evaluation and validation on an appropriate dataset.

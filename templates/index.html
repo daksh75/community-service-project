@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Smart AQI AI</title><script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+<aside class="sidebar"><div class="brand">◉ Smart AQI <span>AI</span></div><p class="muted">AIR QUALITY INTELLIGENCE</p>
+<nav><button class="nav active" data-view="dashboard">Dashboard</button><button class="nav" data-view="history">Search history</button></nav>
+<div class="side-note">Live air quality and weather for your searched location.</div></aside>
+<main>
+<header><div><p class="eyebrow">ENVIRONMENT MONITORING</p><h1 id="placeTitle">Your air, explained.</h1><p class="muted" id="coords">Search a city, district or locality to begin.</p></div>
+<div class="search"><input id="searchInput" placeholder="Search e.g. Cyber City, Gurugram" autocomplete="off"><button id="searchBtn">Search</button><div id="suggestions" class="suggestions"></div></div></header>
+<section id="dashboardView">
+<div id="status" class="status">Enter a location to fetch live data.</div>
+<div class="grid">
+<article class="panel hero"><div class="eyebrow">OPENWEATHER AIR QUALITY INDEX</div><div class="aqi-line"><strong id="aqi">--</strong><div><h2 id="aqiLabel">Awaiting location</h2><p class="muted" id="aqiAdvice">Your air-quality summary will appear here.</p></div></div><p class="small muted" id="aqiNote">AQI provider scale: 1–5</p></article>
+<article class="panel"><p class="eyebrow">TEMPERATURE</p><strong class="metric" id="temp">--</strong><p class="muted" id="weatherDesc">Weather conditions</p></article>
+<article class="panel"><p class="eyebrow">HUMIDITY</p><strong class="metric" id="humidity">--</strong><p class="muted">Relative humidity</p></article>
+<article class="panel"><p class="eyebrow">WIND SPEED</p><strong class="metric" id="wind">--</strong><p class="muted">Metres per second</p></article>
+<article class="panel"><p class="eyebrow">PRESSURE</p><strong class="metric" id="pressure">--</strong><p class="muted">hPa</p></article>
+<article class="panel"><p class="eyebrow">ML ANOMALY CHECK</p><strong class="metric" id="anomaly" style="font-size:21px">--</strong><p class="muted small" id="anomalyDetail">Builds a baseline from saved observations</p></article>
+</div>
+<h2 class="section-title">Pollutant concentrations <span class="muted small">μg/m³ unless stated</span></h2>
+<div class="grid pollutants" id="pollutants"></div>
+<div class="charts"><article class="panel"><h3>Next 24 hours · AQI category</h3><canvas id="forecastChart"></canvas></article><article class="panel"><h3>AI air-quality assistant</h3><p class="muted small">Ask about the current air and weather conditions.</p><div id="chatLog" class="chatlog">Your assistant is ready once you load a location.</div><div class="chat-input"><input id="question" placeholder="Is it okay to exercise outside?"><button id="askBtn">Ask AI</button></div></article></div>
+</section>
+<section id="historyView" hidden><article class="panel"><h2>Recent searches</h2><div class="table-wrap"><table><thead><tr><th>Location</th><th>Time saved</th><th>OW AQI</th><th>PM2.5</th><th>Temperature</th></tr></thead><tbody id="historyRows"></tbody></table></div></article></section>
+<footer>Data supplied by OpenWeatherMap. Location search resolves to coordinates; AQI and weather requests use the same coordinates.</footer>
+</main><script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+</body></html>
